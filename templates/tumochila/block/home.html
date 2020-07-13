@@ -1,0 +1,92 @@
+{% extends 'tumochila/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    <div class="page-content header-clear-medium">
+    <div class="container mw-100 d-flex flex-column bg-primary justify-content-center align-center" style="height:100vh">
+        <div class="container bg-danger justify-content-center align-center">
+            <h1>Descubre toda la Informacion que necesitas para viajar al pais que tu quieras!</h1>
+        </div>
+        <div class="container bg-success justify-content-center align-center d-flex flex-row">
+            <h4>Para informacion personalizada de cambio de moneda y visa</h4>
+            <button><a href="{% url 'TuMochilaApp:register' %}">registrate</a></button>
+            <h4>o</h4>
+            <button><a href="{%  url 'TuMochilaApp:login' %}">validate</a></button>
+        </div>
+        <div class="container d-flex flex-row bg-secondary mt-5" style="width: 10%;">
+            <select class="dropdown-primary mr-5">
+                <option value="1">Option 1</option>
+            </select>
+            <button type="submit" value="Viaja!">Viaja!</button>
+        </div>
+{#        <button><a href="{% url 'MochilaApp:logout' %}" width="25px"><span>Logout</span></a></button>#}
+    </div>
+        <div class="footer card card-style">
+            <p class="footer-title">
+                <img src="{% static 'core/images/logo/VanApp_vertical_imagotype.png' %}" alt="VanApp logo" style="width: 45px;"></p>
+            <p class="footer-copyright">Copyright &copy; <span id="copyright-year">{% now "Y" %}</span>. Todos los derechos reservados.</p>
+            <p class="footer-links"><a href="" class="color-highlight">Privacy Policy</a> | <a
+                    href="" class="color-highlight">Terms and Conditions</a>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+
+    {#    <div class="login content">#}
+    {##}
+    {#        <div class="container">#}
+    {#            <div class="row mb-4">#}
+    {#                <div class="col">#}
+    {#                    <div class="logo">#}
+    {#                        <img src="{% static 'images/logo/VanApp_horizontal_imagotype.png' %}"#}
+    {#                             alt="Touch Safe Logo"#}
+    {#                             title="Touch Safe logo" class="mb-2">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {##}
+    {#            <div class="row">#}
+    {#                <div class="col">#}
+    {##}
+    {#                    <form class="form-signin" method="POST">{% csrf_token %}#}
+    {#                        <div class="form-group mb-5">#}
+    {#                            <label for="email" class="blue-text">Email address</label>#}
+    {#                            <input type="email" class="form-control special" id="email" name="email"#}
+    {#                                   data-label="Email address" placeholder="" required>#}
+    {#                        </div>#}
+    {#                        <div class="form-group">#}
+    {#                            <label for="password" class="blue-text">Password</label>#}
+    {#                            <input type="password" id="password" name="password" class="form-control special"#}
+    {#                                   placeholder="" data-label="Password" required>#}
+    {#                        </div>#}
+    {#                        <p class="pull-right mb-4">#}
+    {#                            <a href="{% url 'recover_password' %}">Forgot Password?</a>#}
+    {#                        </p>#}
+    {#                        <button type="submit" class="btn btn-lg btn-primary btn-block mb-5">Log in</button>#}
+    {#                    </form>#}
+    {##}
+    {#                </div>#}
+    {#            </div>#}
+    {##}
+    {#            <div class="row">#}
+    {#                <div class="col">#}
+    {#                    <p class="mb-0" style="font-size: 10px;">Version 1.0</p>#}
+    {#                    <p class="mb-1" style="font-size: 10px;">Powered by#}
+    {#                        <img src="{% static 'images/logo/VanApp_vertical_imagotype.png' %}" alt="VanApp logo" style="width: 45px;"></p>#}
+    {#                    <p><a href="#">VanApp Privacy Statement</a></p>#}
+    {#                </div>#}
+    {#            </div>#}
+    {##}
+    {#        </div>#}
+    {##}
+    {#    </div>#}
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

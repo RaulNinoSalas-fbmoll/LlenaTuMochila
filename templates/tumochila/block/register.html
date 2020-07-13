@@ -1,0 +1,166 @@
+{% extends 'tumochila/base.html' %}
+{% load static %}
+
+
+{% block title %}Registro{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+
+  <div class="page-content header-clear-medium">
+
+        <div class="card card-style">
+            <div class="content mb-0">
+                <h1 class="text-center font-900 font-40 text-uppercase mb-0">Registro</h1>
+
+                <form class="form-signin" method="POST">{% csrf_token %}
+                    <div class="input-style has-icon input-style-1">
+                       <i class="input-icon fa fa-user color-theme"></i>
+                        <input type="text" id="first_name q q" name="first_name" class="form-control special"
+                           placeholder="Nombe" data-label="first_name" required>
+                    </div>
+                    <div class="input-style has-icon input-style-1">
+                        <i class="input-icon fa fa-user color-theme"></i>
+                    <input type="text" id="last_name" name="last_name" class="form-control special"
+                           placeholder="Apellidos" data-label="last_name" required>
+                    </div>
+
+                    <div class="input-style has-icon input-style-1 ">
+                        <i class="input-icon fa fa-at color-theme"></i>
+                        <input type="email" class="form-control special" id="email" name="email"
+                               data-label="Email address" placeholder="Email" required>
+                    </div>
+                    <div class="input-style has-icon input-style-1 ">
+                        <i class="input-icon fa fa-lock color-theme"></i>
+                        <input type="password" id="password" name="password" class="form-control special"
+                               placeholder="Contraseña" data-label="Password" required>
+                    </div>
+                    <div class="input-style has-icon input-style-1  mb-4">
+                        <i class="input-icon fa fa-lock color-theme"></i>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-control special"
+                               placeholder="Confirmar contraseña" data-label="confirm_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-m btn-full btn-primary rounded-s shadow-l text-uppercase font-900" onclick="validatePassword()">Crear cuenta</button>
+                </form>
+                <div class="divider"></div>
+
+                <p class="text-center">
+                    <a href="{% url 'TuMochilaApp:login' %}" class="color-theme opacity-50 font-12">¿Ya está registrado? Entra aquí.</a>
+                    <a href="{% url 'TuMochilaApp:main' %}">Inicio</a>
+                </p>
+            </div>
+        </div>
+
+      <div class="footer card card-style">
+          {#          <a href="#" class="footer-title"><span class="color-highlight">VanApp</span></a>#}
+          <p class="footer-title"><img  src="{% static 'core/images/logo/VanApp_vertical_imagotype.png' %}" alt="VanApp logo" style="width: 45px;"></p>
+          <p class="footer-copyright">Copyright &copy; Enabled <span id="copyright-year">2020</span>. All Rights Reserved.</p>
+          <p class="footer-links"><a href="{% url 'TuMochilaApp:register'%}" class="color-highlight">Privacy Policy</a> | <a href="{% url 'TuMochilaApp:register'%}" class="color-highlight">Terms and Conditions</a>
+          <div class="clear"></div>
+      </div>
+  </div>
+
+
+
+{#    <div class="login content">#}
+    {#        <div class="container">#}
+    {#            <div class="row mb-4">#}
+    {#                <div class="col">#}
+    {#                    <div class="logo">#}
+    {#                        <img src="{% static 'images/logo/VanApp_horizontal_imagotype.png' %}"#}
+    {#                             alt="Touch Safe Logo"#}
+    {#                             title="Touch Safe logo" class="mb-2">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {##}
+    {#            <div class="row">#}
+    {#                <div class="col">#}
+    {##}
+    {#                    <form class="form-signin" method="POST">{% csrf_token %}#}
+    {#                        <div class="form-group mb-5">#}
+    {#                            <label for="email" class="blue-text">Email</label>#}
+    {#                            <input type="email" class="form-control special" id="email" name="email"#}
+    {#                                   data-label="Email address" placeholder="" required>#}
+    {#                        </div>#}
+    {#                        <div class="form-group">#}
+    {#                            <label for="first_name" class="blue-text">Nombre</label>#}
+{#                            <input type="text" id="first_name" name="first_name" class="form-control special"#}
+{#                                   placeholder="" data-label="first_name" required>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="last_name" class="blue-text">Apellidos</label>#}
+{#                            <input type="text" id="last_name" name="last_name" class="form-control special"#}
+{#                                   placeholder="" data-label="last_name" required>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="nickname" class="blue-text">Apodo</label>#}
+{#                            <input type="text" id="nickname" name="nickname" class="form-control special"#}
+{#                                   placeholder="" data-label="nickname" >#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <div class="form-group">#}
+{#                                <label for="phone" class="blue-text">Telefono</label>#}
+{#                                <input type="text" id="phone" name="phone" class="form-control-special"#}
+{#                                       placeholder="" data-label="phone" >#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="city" class="blue-text">Ciudad</label>#}
+{#                            <input type="text" id="city" name="city" class="form-control special"#}
+{#                                   placeholder="" data-label="city">#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="password" class="blue-text">Contraseña</label>#}
+{#                            <input type="password" id="password" name="password" class="form-control special"#}
+{#                                   placeholder="" data-label="Password" required>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="confirm_password" class="blue-text">Repite la contraseña</label>#}
+{#                            <input type="password" id="confirm_password" name="confirm_password" class="form-control special"#}
+{#                                   placeholder="" data-label="confirm_password" required>#}
+{#                        </div>#}
+{##}
+{#                        <p class="pull-right mb-4">#}
+                            {#                            <a href="{% url 'recover_password' %}">Forgot Password?</a>#}
+{#                        </p>#}
+{#                        <button type="submit" class="btn btn-lg btn-primary btn-block mb-5" onclick="validatePassword()">Log in</button>#}
+{#                    </form>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="row">#}
+{#                <div class="col">#}
+{#                    <p class="mb-0" style="font-size: 10px;">Version 1.0</p>#}
+{#                    <p class="mb-1" style="font-size: 10px;">Powered by#}
+{#                        <img src="{% static 'images/logo/VanApp_vertical_imagotype.png' %}" alt="VanApp logo" style="width: 45px;"></p>#}
+{#                    <p><a href="#">VanApp Privacy Statement</a></p>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{##}
+{#    </div>#}
+
+<script>
+    let
+        password = document.getElementById("password");
+    if (password) {
+        let confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword() {
+            if (password.value !== confirm_password.value) {
+                confirm_password.setCustomValidity("Las contraseñas no coinciden");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    }
+</script>
+{% endblock %}
+
+{% block footer %}{% endblock %}
