@@ -1,0 +1,28 @@
+{%  extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    <div class="container mw-100 d-flex flex-column bg-primary justify-content-center align-center" style="height:100vh">
+        <div class="container bg-danger justify-content-center align-center">
+            <h1>Descubre toda la Informacion que necesitas para viajar al pais que tu quieras!</h1>
+        </div>
+        <div class="container bg-success justify-content-center align-center d-flex flex-row">
+            <h4>Para informacion personalizada de cambio de moneda y visa</h4>
+            <button><a href="{% url 'registro' %}">registrate</a></button>
+            <h4>o</h4>
+            <button><a href="{%  url 'login' %}">validate</a></button>
+        </div>
+        <div class="container d-flex flex-row bg-secondary mt-5" style="width: 10%;">
+            <select class="dropdown-primary mr-5">
+                <option value="1">Option 1</option>
+            </select>
+            <button type="submit" value="Viaja!">Viaja!</button>
+        </div>
+        <button><a href="{% url 'logout' %}" width="25px"><span>Logout</span></a></button>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
