@@ -18,13 +18,11 @@
                         {% csrf_token %}
                         <div class="input-style has-icon input-style-1">
                             <button type="submit" class="btn btn-primary rounded-s shadow-l text-uppercase m-2" onclick="validatePassword()">Crear cuenta</button>
+                            <button class="btn btn-primary rounded-s shadow-l text-uppercase m-2"><a href="{% url 'app:register' %}" class="color-theme">Login</a></button>
                         </div>
                     </form>
                 </div>
                 <div class="divider">
-                    <p class="text-center">
-                        <a href="{% url 'app:login' %}" class="color-theme opacity-50 font-12">¿Ya está registrado? Entra aquí.</a>
-                    </p>
                 </div>
             </div>
         </div>

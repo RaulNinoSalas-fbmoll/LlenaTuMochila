@@ -3,54 +3,88 @@
 
 {% block title %}{{ country.country }}{% endblock %}
 
-{% block header %}{% endblock %}
+
 
 {% block content %}
 
-    <div id="page-cont">
-        <div class="card card-style mt-5">
-            <div class="content mt-4 mb-0">
+    <div id="page-cont ">
+        <div>
+            <div class="content d-flex mt-4 ml-3 row">
                 <h1>{{ country.country }}</h1>
-                <div>
-                    <h4>Comida:</h4>
-                    <p>{{ info_country.meal }}</p>
-                    <h4>Museos:</h4>
-                    <p>{{ info_country.museum }}</p>
-                    <h4>Monumentos:</h4>
-                    <p>{{ info_country.monuments }}</p>
-                    <h4>Ciudades:</h4>
-                    <p>{{ info_country.citys }}</p>
-                    <h4>Moneda:</h4>
-                    <p>{{ country.cod_coin }}</p>
+                <div id="information" class="card-deck">
+                    <div class="card  col-lg-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h4 class="card-title">Comida:</h4>
+                            <p class="card-text">{{ info_country.meal }}</p>
+                        </div>
+                    </div>
+                    <div class="card  col-lg-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h4>Museos:</h4>
+                            <p>{{ info_country.museum }}</p>
+                        </div>
+                    </div>
+                    <div class="card  col-lg-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h4>Monumentos:</h4>
+                            <p>{{ info_country.monuments }}</p>
+                        </div>
+                    </div>
+                    <div class="card  col-lg-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h4>Ciudades:</h4>
+                            <p>{{ info_country.citys }}</p>
+                        </div>
+                    </div>
+                    <div class="card col-lg-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h4>Moneda:</h4>
+                            <p>{{ country.cod_coin }}</p>
+                        </div>
+                    </div>
+                    <div class="division"></div>
+                    <div id="changecoin" class="page-content header-clear-medium">
+                        {% if country.cod_coin ==  "EUR" %}
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-body">
+                                    <table>
+                                        <th>Moneda</th>
+                                        <th>Compra</th>
+                                        <th>Venta</th>
+                                        {% for change in cambioEuro %}
+                                            <tr>
+                                                <td>{{ change.cod_coin }}:</td><td> {{ change.buy }}</td><td>{{ change.sell }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        {% elif country.cod_coin ==  "USD" %}
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-body">
+                                    <table>
+                                        <tr>
+                                            <th>Moneda</th>
+                                            <th>Compra</th>
+                                            <th>Venta</th>
+                                        </tr>
+                                        {% for change in cambioDolar %}
+                                            <tr>
+                                                <td>{{ change.cod_coin }}:</td><td>{{ change.buy }}</td><td>{{ change.sell }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        {%  else %}
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-body">
+                                    <p>Sin información</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="page-content header-clear-medium">
-                    {% if country.cod_coin ==  "EUR" %}
-                        <table>
-                            {% for change in cambioEuro %}
-                                <td>{{ change.cod_coin }}: {{ change.buy }}  {{ change.sell }}</td>
-                            {% endfor %}
-                        </table>
-                    {% elif country.cod_coin ==  "USD" %}
-                        <table>
-                            {% for change in cambioDolar %}
-                                <td>{{ change.cod_coin }}: {{ change.buy }}  {{ change.sell }}</td>
-                            {% endfor %}
-                        </table>
-                    {%  else %}
-                        <p>Sin información</p>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="container d-flex flex-row bg-secondary mt-5" style="width: 10%;">
-                <form method="POST" action="{% url 'app:information'  %}">
-
-                    <select name="country" class="dropdown-primary mr-5">
-                        {%  for country in countries %}
-                            <option value="{{ country.id }}">{{ country.country }}</option>
-                        {% endfor %}
-                    </select>
-                    <button type="submit" class="submit">Viaja!</button>
-                </form>
             </div>
         </div>
     </div>

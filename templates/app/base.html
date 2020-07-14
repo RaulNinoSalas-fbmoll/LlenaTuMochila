@@ -13,40 +13,36 @@
 
 <body>
 
-<div id="page"  style="height:100vh">
+<div id="page" >
 
     {% block header %}<!--Menu sticky movil-->
-        <div id="navsticky" class="header header-fixed">
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary">
-                    <a href="{% url 'app:main' %}">Inicio</a>
-                </button>
-                <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Viaja a...
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
+        <div id="navsticky" class="header header-fixed justify-content-center">
+            <div class="btn-group justify-content-center">
+                <button class="btn btn-m btn-full btn-secondary rounded-s shadow-l text-uppercase">
+                    <a href="{% url 'app:main' %}">Inicio</a></button>
+                <button class="btn btn-m btn-full btn-secondary rounded-s shadow-l text-uppercase">
+                    <a href="#" disabled>Perfil</a></button>
+                <button class="btn btn-m btn-full btn-secondary rounded-s shadow-l text-uppercase">
+                    <a href="{% url 'app:register' %}#">Registro</a></button>
+                <button class="btn btn-m btn-full btn-secondary rounded-s shadow-l text-uppercase">
+                    <a href="{% url 'app:login' %}">Login</a></button>
             </div>
         </div>
 
+
     {% endblock %}
 
-    {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-    {% block footer %}<!--Menu footer-->
-        <div class="footer card card-style">
-            <p class="footer-title">Llena tu mochila</p>
-            <p class="footer-copyright">Copyright &copy; <span id="copyright-year">{% now "Y" %}</span>. Todos los derechos reservados.</p>
-            <p class="footer-links"><a href="{% url 'app:main' %}" class="color-highlight">Privacy Policy</a> | <a
-                    href="{% url 'app:main' %}" class="color-highlight">Terms and Conditions</a>
-            <div class="clear"></div>
-        </div>
-    {% endblock %}
+{% block footer %}<!--Menu footer-->
+    <div class="footer card card-style mt-3">
+        <p class="footer-title">Llena tu mochila</p>
+        <p class="footer-copyright">Copyright &copy; <span id="copyright-year">{% now "Y" %}</span>. Todos los derechos reservados.</p>
+        <p class="footer-links"><a href="{% url 'app:main' %}" class="color-highlight">Privacy Policy</a> | <a
+                href="{% url 'app:main' %}" class="color-highlight">Terms and Conditions</a>
+        <div class="clear"></div>
+    </div>
+{% endblock %}
 </div>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
