@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+{% block title %}Registro{% endblock %}
+
+
+
+{% block content %}
+
+    <div id="page-cont">
+        <div class="card card-style mt-5">
+            <div class="content mb-0">
+                <h1 class="text-center font-900 font-40 text-uppercase mb-0">Registro</h1>
+                <div>
+                    <form action="{% url 'app:register' %}" class="form-signin" method="POST">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <div class="input-style has-icon input-style-1">
+                            <button type="submit" class="btn btn-primary rounded-s shadow-l text-uppercase m-2" onclick="validatePassword()">Crear cuenta</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="divider">
+                    <p class="text-center">
+                        <a href="{% url 'app:login' %}" class="color-theme opacity-50 font-12">¿Ya está registrado? Entra aquí.</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let
+            password = document.getElementById("password");
+        if (password) {
+            let confirm_password = document.getElementById("confirm_password");
+
+            function validatePassword() {
+                if (password.value !== confirm_password.value) {
+                    confirm_password.setCustomValidity("Las contraseñas no coinciden");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        }
+    </script>
+{% endblock %}
+

@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block content %}
+
+    <div id="page-cont">
+        <div class="card card-style mt-5">
+            <div class="content mt-4 mb-0">
+                <h1 class="text-center font-600 font-40 mb-3">Inicia sesión</h1>
+                <div class="container d-flex flex-column justify-content-center align-center mt-5">
+                    <div class="container justify-content-center align-center">
+                        <h1 class="mt-4">Descubre toda la Informacion que necesitas para viajar al pais que tu quieras!</h1>
+                        <h4>Para informacion personalizada de cambio de moneda y visa</h4>
+                    </div>
+                    <div class="container justify-content-around align-center d-flex flex-row ">
+                        <button class="btn btn-primary rounded-s shadow-l text-uppercase m-2"><a href="{% url 'app:register' %}">Registrate</a></button>
+                        <button class="btn btn-primary rounded-s shadow-l text-uppercase m-2"><a href="{%  url 'app:login' %}">Validate</a></button>
+                    </div>
+                    <div class="container justify-content-around align-center d-flex flex-row " >
+                        <form method="POST" action="{% url 'app:information'  %}">
+                            {% csrf_token %}
+                            <select name="country" class="dropdown-primary">
+                                {%  for country in countries %}
+                                    <option value="{{ country.id }}">{{ country.country }}</option>
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-m btn-full btn-primary rounded-s shadow-l text-uppercase">Viaja!</button>
+                        </form>
+                    </div>
+                    {#        <button><a href="{% url 'app:logout' %}" width="25px"><span>Logout</span></a></button>#}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

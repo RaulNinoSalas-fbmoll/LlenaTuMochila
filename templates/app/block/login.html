@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+
+    <div id="page-cont">
+        <div class="card card-style mt-5">
+            <div class="content mt-4 mb-0">
+                <h1 class="text-center font-600 font-40 mb-3">Inicia sesión</h1>
+
+                <form class="form-signin" method="POST">
+                    {% csrf_token %}
+                    <div class="pb-2">
+                        <input type="email" class="form-control" id="email" name="email"
+                               data-label="Email address" placeholder="Email" required>
+                    </div>
+                    <div class="input-style has-icon input-style-1 pb-1">
+                        <input type="password" id="password" name="password" class="form-control"
+                               placeholder="Contraseña" data-label="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-s shadow-l text-uppercase m-2">Inicio sesión</button>
+                </form>
+
+                <div class="d-flex">
+                    <div class="pb-2 text-right">
+                        <a href="{% url 'app:register' %}" class="color-theme">Crear una cuenta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
