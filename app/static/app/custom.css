@@ -1,0 +1,32 @@
+#page {
+  background-color: #74b49b;
+}
+#page-cont {
+  background-color: #e3e3e3;
+  height: 70vh;
+}
+#navsticky {
+  background-color: #a7d7c5;
+}
+.btn-primary {
+  background-color: #74b49b;
+}
+.btn-primary:hover {
+  background-color: #ee6f57;
+}
+.btn-secondary {
+  background-color: #ee6f57;
+}
+.btn-secondary:hover {
+  background-color: #a7d7c5;
+}
+select {
+  width: 100px;
+}
+.card {
+  background-color: #e3e3e3;
+}
+button > a {
+  color: white;
+}
+/*# sourceMappingURL=custom.css.map */
